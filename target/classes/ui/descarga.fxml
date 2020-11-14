@@ -7,19 +7,19 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="lbNombre" prefHeight="18.0" prefWidth="220.0" text="Funciona?">
+      <Label fx:id="lbNombre" prefHeight="18.0" prefWidth="200.0">
          <HBox.margin>
-            <Insets left="20.0" top="20.0" />
+            <Insets left="10.0" top="20.0" />
          </HBox.margin>
       </Label>
-      <ProgressBar fx:id="pbProgreso" prefHeight="20.0" prefWidth="240.0" progress="0.0">
+      <ProgressBar fx:id="pbProgreso" prefHeight="20.0" prefWidth="220.0" progress="0.0">
          <HBox.margin>
             <Insets top="20.0" />
          </HBox.margin>
       </ProgressBar>
-      <Label fx:id="lbVelocidad" prefHeight="18.0" prefWidth="96.0" text="No">
+      <Label fx:id="lbVelocidad" prefHeight="18.0" prefWidth="60.0">
          <HBox.margin>
-            <Insets left="20.0" top="20.0" />
+            <Insets left="10.0" top="20.0" />
          </HBox.margin>
       </Label>
    </children>

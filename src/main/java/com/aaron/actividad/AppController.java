@@ -2,6 +2,7 @@ package com.aaron.actividad;
 
 import com.aaron.actividad.util.R;
 import com.aaron.actividad.util.Tarea;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -20,7 +21,7 @@ public class AppController {
     public VBox vbDesc;
 
     @FXML
-    public void anadir(){
+    public void anadir(ActionEvent event){
         String nombre = tfUrl.getText();
         Tarea tarea = new Tarea(lbInformacion,nombre);
         tarea.start();
@@ -31,6 +32,8 @@ public class AppController {
             loader.setLocation(R.getUI("descarga.fxml"));
             loader.setController(controller);
             HBox hbox = loader.load();
+
+            controller.pasarParametros(nombre);
 
             spDescargas.setContent(vbDesc);
             vbDesc.getChildren().add(hbox);
