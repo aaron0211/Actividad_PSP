@@ -4,7 +4,6 @@ import com.aaron.actividad.SplashController;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -17,10 +16,6 @@ public class Hilo extends Thread{
         this.lbProgreso = lbProgreso;
         this.pbProgreso = pbProgreso;
         this.controller = controller;
-    }
-
-    public Hilo(){
-
     }
 
     @Override
