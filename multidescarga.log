@@ -1,0 +1,43 @@
+18:58:59.336 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+18:59:16.720 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:00:14.904 [Thread-6] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+19:02:08.243 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:02:39.421 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:02:59.328 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:03:45.691 [Thread-6] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+19:15:50.409 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:16:46.774 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:17:20.163 [Thread-6] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+19:19:28.662 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:23:58.380 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:25:35.245 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:26:09.111 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+08:59:46.627 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+08:59:54.879 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+09:06:01.146 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+09:06:01.510 [Thread-6] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+18:45:30.190 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+18:45:55.592 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+18:55:00.499 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+18:56:33.768 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+19:00:30.376 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:02:09.217 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+19:04:06.299 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:04:43.446 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:11:03.988 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:11:15.175 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:19:11.103 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:19:19.441 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:20:44.468 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:20:52.340 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:27:06.027 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:27:12.819 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:29:48.808 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:29:54.469 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:32:00.436 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:32:04.333 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:33:55.484 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:33:59.805 [Thread-4] TRACE com.aaron.actividad.DescargaController - Descarga Cancelada
+19:34:25.570 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada
+19:35:38.047 [Thread-6] TRACE com.aaron.actividad.DescargaController - Descarga Finalizada
+19:40:16.415 [JavaFX Application Thread] TRACE com.aaron.actividad.DescargaController - Descarga Iniciada

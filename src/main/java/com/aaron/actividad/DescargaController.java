@@ -4,10 +4,14 @@ import com.aaron.actividad.util.DownloadTask;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,10 +25,13 @@ public class DescargaController {
     private CheckBox cbSeleccionar;
     private DownloadTask downloadTask;
     private boolean pausado = false;
+    private VBox padre;
+    private static final Logger logger = LogManager.getLogger(DescargaController.class);
 
-    public DescargaController(String urlText, CheckBox cbSeleccionar){
+    public DescargaController(String urlText, CheckBox cbSeleccionar, VBox padre){
         this.urlText = urlText;
         this.cbSeleccionar = cbSeleccionar;
+        this.padre = padre;
     }
 
     public void start() {
@@ -35,14 +42,17 @@ public class DescargaController {
             if (cbSeleccionar.isSelected()) {
                 FileChooser fileChooser = new FileChooser();
                 File file = fileChooser.showSaveDialog(btEliminar.getScene().getWindow());
+                String urlDescarga = file.getAbsolutePath();
+                System.out.println(urlDescarga);
                 if (file == null) return;
 
-                downloadTask = new DownloadTask(urlText, file);
+                downloadTask = new DownloadTask(urlText, file,urlDescarga);
             }else {
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setInitialFileName("C:\\Users\\aaron\\Desktop\\"+urlText);
-                File file = new File(String.valueOf(fileChooser));
-                downloadTask = new DownloadTask(urlText,file);
+                DirectoryChooser chooser = new DirectoryChooser();
+                File file = new File("src/prueba.zip");
+                String urlDescarga = file.getAbsolutePath();
+                chooser.setInitialDirectory(file);
+                downloadTask = new DownloadTask(urlText,file, urlDescarga);
             }
             pbProgreso.progressProperty().unbind();
             pbProgreso.progressProperty().bind(downloadTask.progressProperty());
@@ -59,20 +69,21 @@ public class DescargaController {
             downloadTask.messageProperty().addListener((observableValue, oldValue, newValue) -> lbPorcentaje.setText(newValue));
             new Thread(downloadTask).start();
         }catch (MalformedURLException murle){
+            logger.error("Error de descarga"+murle.fillInStackTrace());
             murle.printStackTrace();
         }
-        //Hilo hilo = new Hilo(pbProgreso,lbNombre,lbVelocidad, lbPorcentaje);
-        //hilo.start();
     }
 
     @FXML
     public void pausar(ActionEvent event){
         if(!pausado){
+            downloadTask.setPausa(true);
             btPausar.setText("REANUDAR");
             pausado = !pausado;
             btCancelar.setDisable(!btCancelar.isDisable());
             btEliminar.setDisable(!btEliminar.isDisable());
         }else {
+            downloadTask.setPausa(false);
             btPausar.setText("PAUSAR");
             pausado = !pausado;
             btCancelar.setDisable(!btCancelar.isDisable());
@@ -90,8 +101,8 @@ public class DescargaController {
 
     @FXML
     public void eliminar(ActionEvent event){
-        Stage pantalla = (Stage) this.btEliminar.getScene().getWindow();
-        pantalla.close();
+        Parent pantalla = btEliminar.getParent().getParent().getParent();
+        padre.getChildren().remove(pantalla);
     }
 
 //    public void eliminarDescarga(DescargaController controller){

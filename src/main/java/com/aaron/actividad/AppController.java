@@ -5,10 +5,7 @@ import com.aaron.actividad.util.Tarea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,22 +24,30 @@ public class AppController {
     @FXML
     public void anadir(ActionEvent event){
         urlText = tfUrl.getText();
-        Tarea tarea = new Tarea(lbInformacion,urlText);
-        tarea.start();
         tfUrl.clear();
         tfUrl.requestFocus();
 
         try{
             FXMLLoader loader = new FXMLLoader();
-            DescargaController controller = new DescargaController(urlText,cbSeleccionar);
-            loader.setLocation(R.getUI("descarga.fxml"));
-            loader.setController(controller);
-            VBox vbox = loader.load();
-
-            spDescargas.setContent(vbDesc);
-            vbDesc.getChildren().add(vbox);
-            controller.start();
+            DescargaController controller = new DescargaController(urlText,cbSeleccionar,vbDesc);
             descargas.add(controller);
+            if (descargas.size()<=5) {
+                loader.setLocation(R.getUI("descarga.fxml"));
+                loader.setController(controller);
+                VBox vbox = loader.load();
+
+                spDescargas.setContent(vbDesc);
+                vbDesc.getChildren().add(vbox);
+                controller.start();
+                Tarea tarea = new Tarea(lbInformacion,urlText);
+                tarea.start();
+            }else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Tamaño máximo");
+                alert.setContentText("Sólo puedes tener 5 descargas simultáneas");
+                alert.show();
+            }
+
         }catch (IOException ioe){
             ioe.printStackTrace();
         }

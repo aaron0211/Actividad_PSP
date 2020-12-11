@@ -5,5 +5,4 @@ com\aaron\actividad\DescargaController.class
 com\aaron\actividad\AppController.class
 com\aaron\actividad\Splash.class
 com\aaron\actividad\util\R.class
-com\aaron\actividad\App.class
 com\aaron\actividad\util\Hilo.class
