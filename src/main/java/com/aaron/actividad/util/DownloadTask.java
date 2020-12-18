@@ -15,15 +15,12 @@ import java.net.URLConnection;
 public class DownloadTask extends Task<Void> {
     private URL tfUrl;
     private File file;
-    private String urlDescarga;
-
     private boolean pausa;
     private static final Logger logger = LogManager.getLogger(DescargaController.class);
 
-    public DownloadTask(String url, File file, String urlDescarga) throws MalformedURLException {
+    public DownloadTask(String url, File file) throws MalformedURLException {
         this.tfUrl = new URL(url);
         this.file = file;
-        this.urlDescarga = urlDescarga;
         logger.trace("Descarga Iniciada");
     }
 
@@ -44,6 +41,7 @@ public class DownloadTask extends Task<Void> {
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
             int totalRead = 0;
+            int anterior = 0;
 
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                 if (pausa){
@@ -51,8 +49,15 @@ public class DownloadTask extends Task<Void> {
                     continue;
                 }
                 updateProgress(((double)totalRead/fileSize),1);
-                double porcentaje = ((double)totalRead*100/fileSize);
-                updateMessage(String.format("%.1f", porcentaje) +" %");
+                long tiempo = System.currentTimeMillis();
+                if (tiempo%100 == 0){
+                    double velocidad = (double)(totalRead - anterior)/1048576;
+                    anterior = totalRead;
+                    if (velocidad>0.5) {
+                        double porcentaje = ((double)totalRead*100/fileSize);
+                        updateMessage("Descargado "+totalRead/1048576+"/"+fileSize/1048576+"MB  "+String.format("%.1f", porcentaje) +" %"+"      Velocidad: "+String.format("%.1f",velocidad)+" MB/s");
+                    }
+                }
 
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
                 totalRead += bytesRead;
