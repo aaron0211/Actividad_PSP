@@ -29,14 +29,12 @@ public class DescargaController {
     private DownloadTask downloadTask;
     private AppController appController;
     private boolean pausado = false;
-    private VBox padre;
     private static final Logger logger = LogManager.getLogger(DescargaController.class);
     private String fileName;
 
-    public DescargaController(String urlText, CheckBox cbSeleccionar, VBox padre, AppController appController, int contador){
+    public DescargaController(String urlText, CheckBox cbSeleccionar, AppController appController, int contador){
         this.urlText = urlText;
         this.cbSeleccionar = cbSeleccionar;
-        this.padre = padre;
         this.appController = appController;
 
         try {
@@ -64,6 +62,11 @@ public class DescargaController {
         try {
             if (cbSeleccionar.isSelected()) {
                 FileChooser fileChooser = new FileChooser();
+                fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                        new FileChooser.ExtensionFilter("Image Files","*.png","*.jpg"),
+                        new FileChooser.ExtensionFilter("Video Files", "*.mp4"),
+                        new FileChooser.ExtensionFilter("Compressed Files", "*.zip"),
+                        new FileChooser.ExtensionFilter("All Files", "*.*"));
                 File file = fileChooser.showSaveDialog(btEliminar.getScene().getWindow());
                 if (file == null) return;
 
@@ -137,9 +140,11 @@ public class DescargaController {
 
     @FXML
     public void eliminar(ActionEvent event){
+        Parent pantalla = btEliminar.getParent().getParent().getParent();
+        Parent descarga = btCancelar.getParent().getParent();
+        VBox vBox = (VBox) pantalla;
         if (downloadTask == null){
-            Parent pantalla = btEliminar.getParent().getParent().getParent();
-            padre.getChildren().remove(pantalla);
+            vBox.getChildren().remove(descarga);
             return;
         }
         if (!downloadTask.isCancelled()){
@@ -149,11 +154,10 @@ public class DescargaController {
             Optional<ButtonType> resp = confirmacion.showAndWait();
             if (resp.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE)
                 return;
-            Parent pantalla = btEliminar.getParent().getParent().getParent();
-            padre.getChildren().remove(pantalla);
+            downloadTask.cancel();
+            vBox.getChildren().remove(descarga);
         }else {
-            Parent pantalla = btEliminar.getParent().getParent().getParent();
-            padre.getChildren().remove(pantalla);
+            vBox.getChildren().remove(descarga);
         }
         logger.trace("Descarga eliminada");
         appController.cargarLista();

@@ -60,7 +60,7 @@ public class AppController {
         contador++;
         try{
             FXMLLoader loader = new FXMLLoader();
-            DescargaController controller = new DescargaController(urlText,cbSeleccionar,vbDesc,this,contador);
+            DescargaController controller = new DescargaController(urlText,cbSeleccionar,this,contador);
             descargas.add(controller);
             loader.setLocation(R.getUI("descarga.fxml"));
             loader.setController(controller);

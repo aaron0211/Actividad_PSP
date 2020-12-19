@@ -51,7 +51,7 @@ public class DownloadTask extends Task<Void> {
                 updateProgress(((double)totalRead/fileSize),1);
                 long tiempo = System.currentTimeMillis();
                 if (tiempo%100 == 0){
-                    double velocidad = (double)(totalRead - anterior)/1048576;
+                    double velocidad = (double)(totalRead - anterior)/104857.6;
                     anterior = totalRead;
                     if (velocidad>0.5) {
                         double porcentaje = ((double)totalRead*100/fileSize);
